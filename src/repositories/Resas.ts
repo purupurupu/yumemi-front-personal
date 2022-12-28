@@ -1,4 +1,5 @@
 import axios from 'axios'
+import Prefecture from '@/types/type'
 
 const baseUrl: any = process.env.RESAS_ENDPOINT
 const apiKey: any = process.env.RESAS_API_KEY
@@ -21,10 +22,4 @@ export default async function GetPrefectures(): Promise<Prefecture[]> {
   })
   const json = response.data
   return json.result
-}
-
-interface Prefecture {
-  prefCode: number
-  prefName: string
-  prefNameEng: string
 }
