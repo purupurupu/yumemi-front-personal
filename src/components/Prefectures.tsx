@@ -25,6 +25,8 @@ export const Prefectures: any = () => {
       const selectedItem = {
         prefCode,
         prefName: items.find((item) => item.prefCode === prefCode)?.prefName,
+        //TODO
+        //setItemsで変更したstateが反映されなかったので、暫定で再処理している。
         checked: !prevSelectedPrefectures.find((item) => item.prefCode === prefCode)?.checked,
       }
       if (selectedItem.checked) {
@@ -54,7 +56,9 @@ export const Prefectures: any = () => {
       {/* selectedPrefectureを表示する */}
       <div>
         {selectedPrefectures.map((item) => (
-          <div key={item.prefCode}>{item.prefName}</div>
+          <div key={item.prefCode}>
+            {item.prefCode} {item.prefName}
+          </div>
         ))}
       </div>
     </div>
