@@ -1,4 +1,4 @@
-import GetPrefectures from '@/repositories/Resas'
+import { GetPrefectures } from '@/repositories/Resas'
 
 export default async function ModifyPrefecture() {
   const prefectures = await GetPrefectures()
