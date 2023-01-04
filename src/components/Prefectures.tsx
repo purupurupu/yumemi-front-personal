@@ -1,6 +1,8 @@
 import ModifyPrefecture from '@/services/ModifyPrefecture'
+import ModifyPopularComposition from '@/services/ModifyPopularComposition'
+
 import React, { useState, useEffect } from 'react'
-import Prefecture from '@/types/type'
+import { Prefecture, PopularComposition } from '@/types/type'
 
 export const Prefectures: any = () => {
   const [items, setItems] = useState<Prefecture[]>([])
@@ -37,6 +39,9 @@ export const Prefectures: any = () => {
         return prevSelectedPrefectures.filter((item) => item.prefCode !== prefCode)
       }
     })
+
+    // 人口構成APIのGETシーケンス
+    const popularCompositionJson = ModifyPopularComposition(prefCode)
   }
 
   return (
