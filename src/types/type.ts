@@ -2,6 +2,7 @@ export interface Prefecture {
   prefCode: number
   prefName?: string
   checked?: boolean
+  value?: number
 }
 export interface PopularComposition {
   boundaryYear: number
