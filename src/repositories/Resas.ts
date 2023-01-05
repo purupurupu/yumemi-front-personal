@@ -26,7 +26,7 @@ export async function GetPrefectures(): Promise<Prefecture[]> {
 
 // 選択したprefCodeからPopularCompositionを返却
 // 単数のみ対応中
-export async function GetPopularComposition(prefCode: any): Promise<PopularComposition[]> {
+export async function GetPopularComposition(prefCode: number): Promise<PopularComposition> {
   const response = await axios
     .get(`${baseUrl}/population/composition/perYear?cityCode=-&prefCode=${prefCode}`, config)
     .catch((error) => {

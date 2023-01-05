@@ -4,10 +4,24 @@ export interface Prefecture {
   checked?: boolean
   value?: number
 }
+
+export interface SelectedPrefectures {
+  name: string
+  data: number
+}
+
 export interface PopularComposition {
   boundaryYear: number
-  label: string
+  data: Array<{
+    label: string
+    data: Array<{
+      year: number
+      value: number
+    }>
+  }>
+}
+
+export interface TotalPopular {
   year: number
   value: number
-  rate: number
 }

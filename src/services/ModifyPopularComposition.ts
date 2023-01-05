@@ -1,16 +1,10 @@
 import { GetPopularComposition } from '@/repositories/Resas'
-import { map } from 'highcharts'
+import { PopularComposition, TotalPopular } from '@/types/type'
 
-export default async function ModifyPopularComposition(prefCode: any) {
-  //   const prefCodes = selectedPrefectures.map((e: any) => {
-  //     return e.prefCode
-  //   })//   console.log(prefCodes)
-
-  const result = await GetPopularComposition(prefCode)
+export default async function ModifyPopularComposition(prefCode: number) {
+  const result: PopularComposition = await GetPopularComposition(prefCode)
   // 総人口のみを取得
-  const popular = result.data[0].data
-
-  const values = popular.map((item: any) => item.value)
-  // console.log(values)
+  const popular: TotalPopular[] = result.data[0].data
+  const values: number[] = popular.map((item: TotalPopular) => item.value)
   return values
 }

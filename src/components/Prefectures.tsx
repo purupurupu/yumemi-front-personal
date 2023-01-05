@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from 'react'
-import ReactDOM from 'react-dom'
-import Highcharts from 'highcharts'
+import Highcharts, { SeriesOptionsType } from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 
 import ModifyPrefecture from '@/services/ModifyPrefecture'
 import ModifyPopularComposition from '@/services/ModifyPopularComposition'
-import { Prefecture, PopularComposition } from '@/types/type'
+import { Prefecture, SelectedPrefectures } from '@/types/type'
 
 export const Prefectures: any = () => {
   const [items, setItems] = useState<Prefecture[]>([])
-  const [selectedPrefectures, setSelectedPrefectures] = useState<any[]>([])
-  // const [series, setSeries] = useState<any>([])
+  const [selectedPrefectures, setSelectedPrefectures] = useState<Array<SeriesOptionsType>>([])
 
   useEffect(() => {
     async function fetchData() {
@@ -92,18 +90,20 @@ export const Prefectures: any = () => {
       ),
     )
 
-    setSelectedPrefectures((prevSelectedPrefectures) => {
+    setSelectedPrefectures((prevSelectedPrefectures: any) => {
       const selectedItem = {
         // For highchart format
         name: items.find((item) => item.prefName === prefName)?.prefName,
         data: popularComposition,
       }
-      const checkFlag = !prevSelectedPrefectures.find((item) => item.name === prefName)
+      const checkFlag = !prevSelectedPrefectures.find(
+        (item: SelectedPrefectures) => item.name === prefName,
+      )
       // console.log(checkFlag)
 
       return checkFlag
         ? [...prevSelectedPrefectures, selectedItem]
-        : prevSelectedPrefectures.filter((item) => item.name !== prefName)
+        : prevSelectedPrefectures.filter((item: SelectedPrefectures) => item.name !== prefName)
     })
   }
 
@@ -121,14 +121,6 @@ export const Prefectures: any = () => {
           </li>
         ))}
       </ul>
-      {/* selectedPrefectureを表示する */}
-      {/* <div>
-        {selectedPrefectures.map((item) => (
-          <div key={item.prefCode}>
-            {item.prefCode} {item.prefName}
-          </div>
-        ))}
-      </div> */}
       <HighchartsReact highcharts={Highcharts} options={options} />
     </div>
   )
