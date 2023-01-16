@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react'
 import Highcharts, { SeriesOptionsType } from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
+import React, { useState, useEffect } from 'react'
 
-import ModifyPrefecture from '@/services/ModifyPrefecture'
 import ModifyPopularComposition from '@/services/ModifyPopularComposition'
-import { Prefecture, SelectedPrefectures } from '@/types/type'
+import ModifyPrefecture from '@/services/ModifyPrefecture'
 import styles from '@/styles/Prefecture.module.css'
+import { Prefecture, SelectedPrefectures } from '@/types/type'
 
 export const Prefectures: any = () => {
   const [items, setItems] = useState<Prefecture[]>([])
