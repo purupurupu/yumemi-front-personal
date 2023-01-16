@@ -1,0 +1,25 @@
+.prefecture {
+  /* display: block; */
+}
+.prefecture_list_wrapper {
+  width: auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.prefecture_list {
+  width: 33.33%;
+  list-style: none;
+}
+
+.prefecture_checkbox {
+  width: 20px;
+  height: 20px;
+  background-color: #f1f1f1;
+}
+
+@media (max-width: 600px) {
+  .prefecture_list {
+    width: 50%;
+  }
+}

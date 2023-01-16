@@ -5,6 +5,7 @@ import HighchartsReact from 'highcharts-react-official'
 import ModifyPrefecture from '@/services/ModifyPrefecture'
 import ModifyPopularComposition from '@/services/ModifyPopularComposition'
 import { Prefecture, SelectedPrefectures } from '@/types/type'
+import styles from '@/styles/Prefecture.module.css'
 
 export const Prefectures: any = () => {
   const [items, setItems] = useState<Prefecture[]>([])
@@ -108,11 +109,12 @@ export const Prefectures: any = () => {
   }
 
   return (
-    <div>
-      <ul>
+    <div className={styles.prefecture}>
+      <ul className={styles.prefecture_list_wrapper}>
         {items.map((item) => (
-          <li key={item.prefCode}>
+          <li className={styles.prefecture_list} key={item.prefCode}>
             <input
+              className={styles.prefecture_checkbox}
               type='checkbox'
               checked={item.checked}
               onChange={() => toggleChecked(item.prefCode, item.prefName)}
